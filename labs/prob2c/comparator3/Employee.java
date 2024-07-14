@@ -1,4 +1,5 @@
-package lesson8.labs.prob1.comparator2;
+package lesson8.labs.prob2c.comparator3;
+
 import java.util.Objects;
 
 public class Employee {
@@ -15,6 +16,7 @@ public class Employee {
 	public int getSalary() {
 		return salary;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("<");
@@ -25,16 +27,17 @@ public class Employee {
 		return sb.toString();
 		
 	}
-	@Override
-	public boolean equals(Object ob) {
-		if(ob == this) return true;
-		if(ob == null || ob.getClass() != getClass()) return false;
-		Employee e = (Employee)ob;
-		return e.name.equals(name) && e.salary==salary;
+
+	public boolean equals(Object ob){
+		if(this == ob) return true;
+		if(ob == null || getClass()!= ob.getClass()) return false;
+		Employee employee = (Employee)ob;
+		return Objects.equals(name, employee.name) && salary == employee.salary;
 	}
 
+	@Override
 	public int hashCode(){
-		return Objects.hash(name,salary);
+		return Objects.hash(name, salary);
 	}
 }
 
